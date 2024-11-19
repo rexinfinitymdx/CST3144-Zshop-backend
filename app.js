@@ -16,7 +16,7 @@ const dbPassword = encodeURIComponent(properties.get("db.pwd"));
 const dbUrl = properties.get("db.dbUrl");
 const dbParams = properties.get("db.params");
 
-// Construct MongoDB URI
+// Construct MongoDB URI 
 const uri = `${dbPrefix}${dbUser}:${dbPassword}${dbUrl}${dbParams}`;
 
 // MongoDB Client

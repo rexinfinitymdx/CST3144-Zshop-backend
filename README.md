@@ -41,6 +41,7 @@ Description: Places an order with the provided order details.
 Here is an example JSON body to use with the `POST` request for placing an order:
 
 Example json body Request
+
 {
   "orderDetails": {
     "fullName": "Rasel Ahmed",

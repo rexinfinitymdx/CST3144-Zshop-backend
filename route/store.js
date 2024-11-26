@@ -13,7 +13,6 @@ router.post("/orders", async (req, res) => {
 
         const db = req.dbClient.db("webstore");
         const ordersCollection = db.collection("orders");
-        const productsCollection = db.collection("products");
 
         // Create the order
         const order = {
@@ -25,28 +24,12 @@ router.post("/orders", async (req, res) => {
 
         const result = await ordersCollection.insertOne(order);
 
-        // Update availableSeats in the products collection
-        for (const item of cartItems) {
-            const { id, quantity } = item;
-        
-            // Update the product's availableSeats by decrementing it
-            const updateResult = await productsCollection.updateOne(
-                { id: id }, // Match the product by its custom `id` field
-                { $inc: { availableSeats: -quantity } } // Decrement availableSeats by quantity
-            );
-        
-            if (updateResult.matchedCount === 0) {
-                console.warn(`Product with ID ${id} not found`);
-            }
-        }
-        
-
         res.status(201).json({
-            message: "Order created successfully and products updated",
+            message: "Order created successfully",
             orderId: result.insertedId,
         });
     } catch (error) {
-        console.error("Error storing order or updating products:", error.message);
+        console.error("Error storing order:", error.message);
         res.status(500).send("Internal Server Error");
     }
 });

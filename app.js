@@ -57,14 +57,20 @@ app.use((req, res, next) => {
   next();
 });
 
+
+app.use(express.json());
+
+
 // Import routes + search 
 const showRoutes = require("./route/show");
 app.use("/show", showRoutes); // Mount the show routes under /show
 
-app.use(express.json());
 
 const storeRoutes = require("./route/store");
 app.use("/store", storeRoutes); // Mount the store routes under /store
+
+const updateRoutes = require("./route/update");
+app.use("/update", updateRoutes); // Mount the store routes under /update
 
 // Start the server
 const PORT = process.env.PORT || 3000;

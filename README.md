@@ -3,7 +3,7 @@
 This repository contains the backend implementation for the ZShop application. The API is built using Node.js and is deployed on AWS Elastic Beanstalk. Below are the details of the GitHub repository and the available API endpoints.
 
 ## Repository Link
-GitHub Repository: [ZShop Backend](https://github.com/rexinfinitymdx/CST3144-Zshop-backend.git)
+GitHub Repository: https://github.com/rexinfinitymdx/CST3144-Zshop-backend
 
 ## Base API URL
 AWS Elastic Beanstalk API Endpoint:  

@@ -82,12 +82,11 @@ Description: Updates information for a specific product.
 Example body json data
 
 {
-  "cartItems": [
-    {
-      "id": 1,
-      "quantity": 1
-    }
+  "updateItems": [
+    { "id": 1, "availableSeats": 21 },
+    { "id": 4, "availableSeats": 15 }
   ]
 }
+
 
 ---

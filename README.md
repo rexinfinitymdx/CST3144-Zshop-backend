@@ -26,7 +26,7 @@ Description: Retrieves the list of all products.
 Method: GET  
 Endpoint: `/show/products/search/:searchContent`  
 Example Full URL:  
-`https://mynodeappmdx.eu-west-2.elasticbeanstalk.com/show/products/search/Content`  
+`https://mynodeappmdx.eu-west-2.elasticbeanstalk.com/show/products/search/searchContent`  
 
 Description: Searches for products using the provided `searchContent`.
 

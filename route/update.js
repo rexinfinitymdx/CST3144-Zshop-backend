@@ -3,26 +3,30 @@ const router = express.Router();
 
 router.put("/products", async (req, res) => {
     try {
-        const { cartItems } = req.body;
+        const { updateItems } = req.body;
 
-        if (!cartItems || cartItems.length === 0) {
-            return res.status(400).send("Cart items are required");
+        // Validate that updateItems exists and is an array
+        if (!updateItems || !Array.isArray(updateItems) || updateItems.length === 0) {
+            return res.status(400).send("updateItems is required and must be a non-empty array");
         }
 
         const db = req.dbClient.db("webstore");
         const productsCollection = db.collection("products");
 
-        for (const item of cartItems) {
-            const { id, quantity } = item;
+        for (const item of updateItems) {
+            const { id, availableSeats } = item;
 
-            if (!id || !quantity || quantity <= 0) {
-                return res.status(400).send("Each cart item must have a valid ID and quantity");
+            // Validate the required fields for each item
+            if (!id || availableSeats == null || availableSeats < 0) {
+                return res
+                    .status(400)
+                    .send("Each update item must have a valid ID and availableSeats value");
             }
 
-            // Update the product's `availableSeats` by decrementing the quantity
+            // Update the product's `availableSeats` to the new value
             const updateResult = await productsCollection.updateOne(
                 { id }, // Match the product by its `id`
-                { $inc: { availableSeats: -quantity } } // Decrement `availableSeats` by `quantity`
+                { $set: { availableSeats } } // Update `availableSeats`
             );
 
             if (updateResult.matchedCount === 0) {
@@ -31,8 +35,8 @@ router.put("/products", async (req, res) => {
         }
 
         res.status(200).json({
-            message: "Cart items updated successfully",
-            updatedItems: cartItems,
+            message: "Products updated successfully",
+            updatedItems: updateItems,
         });
     } catch (error) {
         console.error("Error updating products:", error.message);

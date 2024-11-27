@@ -9,6 +9,7 @@ GitHub Repository: https://github.com/rexinfinitymdx/CST3144-Zshop-backend
 AWS Elastic Beanstalk API Endpoint:  
 `https://mynodeappmdx.eu-west-2.elasticbeanstalk.com`
 
+
 ## API Endpoints
 
 ### Fetch All Products
@@ -16,6 +17,7 @@ Method: GET
 Endpoint: `/show/products`  
 Full URL:  
 `https://mynodeappmdx.eu-west-2.elasticbeanstalk.com/show/products`  
+
 Description: Retrieves the list of all products.
 
 ---
@@ -25,6 +27,7 @@ Method: GET
 Endpoint: `/show/products/search/:searchContent`  
 Example Full URL:  
 `https://mynodeappmdx.eu-west-2.elasticbeanstalk.com/show/products/search/Content`  
+
 Description: Searches for products using the provided `searchContent`.
 
 ---
@@ -33,7 +36,8 @@ Description: Searches for products using the provided `searchContent`.
 Method: POST  
 Endpoint: `/store/orders`  
 Full URL:  
-`https://mynodeappmdx.eu-west-2.elasticbeanstalk.com/store/orders`  
+`https://mynodeappmdx.eu-west-2.elasticbeanstalk.com/store/orders` 
+
 Description: Places an order with the provided order details.
 
 
@@ -71,6 +75,7 @@ Method: PUT
 Endpoint: `/update/products`  
 Full URL:  
 `https://mynodeappmdx.eu-west-2.elasticbeanstalk.com/update/products`  
+
 Description: Updates information for a specific product.
 
 

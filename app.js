@@ -70,7 +70,7 @@ const storeRoutes = require("./route/store");
 app.use("/store", storeRoutes); // Mount the store routes under /store
 
 const updateRoutes = require("./route/update");
-app.use("/update", updateRoutes); // Mount the store routes under /update
+app.use("/update", updateRoutes); // Mount the update routes under /update
 
 // Start the server
 const PORT = process.env.PORT || 3000;
